@@ -1,0 +1,23 @@
+20070615 KK - Added -f to specify artificial speedup/slowdown and -j to
+         specify artificial jitter.
+20070615 KK - Changed mp32rtp to use getopt with parameters -h, -p, -i, -s,
+         -t. Removed mp32udp and replaced with a -u parameter.
+20070612 KK - Added GPL preamble to mp32rtp.c, mp3parse.h and mp3dir2rtp.
+=== 20070611 KK - Version 1.0 released ===
+
+20070611 KK - Added a VERSION file.
+20070611 KK - Added IP and port printout into mp3dir2rtp.
+20070611 KK - Fixed a bug in mp3dir2rtp with handling spaces in filenames.
+20070611 KK - Added the INSTALL file.
+20070611 KK - make install added
+20070611 KK - changed mp3dirplay from sequantial playback to random sequence.
+20070611 KK - renamed mp3dirplay to mp3dir2rtp and mp3radioplay to
+	mp3radio2rtp.
+20070608 KK - Changed mp3radioplay to use system-wide mp32rtp.
+20070608 KK - The program checks if it's name ends with "udp" (case
+	insensitive) and if yes, switches into raw MPEG mode (RTP and MPA
+	headers stripped). Handy for the Exstreamer UDP receive function.
+20070608 KK - Changed the unable to set broadcast from error to warning to
+	prevent failure where broadcast flag cannot be set and the user wants
+	to use unicast only (do such systems exist at all?)
+20070608 KK - added the mp3radioplay script

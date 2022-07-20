@@ -1,0 +1,12 @@
+mp3dir2rtp /home/clock/music/60s 192.168.2.255 11001 &
+mp3dir2rtp /home/clock/music/80s 192.168.2.255 11002 &
+mp3dir2rtp /home/clock/music/altrock 192.168.2.255 11003 &
+mp3dir2rtp /home/clock/music/dance 192.168.2.255 11004 &
+mp3dir2rtp /home/clock/music/instrumental 192.168.2.255 11005 &
+mp3dir2rtp /home/clock/music/jazz 192.168.2.255 11006 &
+mp3dir2rtp /home/clock/music/psytrance 192.168.2.255 11007 &
+mp3dir2rtp /home/clock/music/rock 192.168.2.255 11008 &
+mp3dir2rtp /home/clock/music/techno 192.168.2.255 11009 &
+#mp3dir2rtp /home/clock/music/test 192.168.2.255 11010 &
+mp3radio2rtp http://live-four.dmd2.ch:8080/lounge_hi 192.168.2.255 11010 &
+#mp3radio2rtp http://virussimul.stream.sunrise.ch:8000 192.168.2.255 11010 &

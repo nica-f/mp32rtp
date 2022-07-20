@@ -1,0 +1,40 @@
+# (c) 2007 Barix AG Zurich Switzerland. http://www.barix.com
+# Written by Karel Kulhavy.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+if [ $# -lt 3 ]
+then
+	echo Usage: "$0" mp3_directory IP_address port >&2
+	exit 1
+fi
+
+while true
+do
+	tmp1=/tmp/mp3dir2rtp_$$.tmp
+	find "$1" -type f -and -iname '*.mp3' > $tmp1 &&
+	lines=`wc -l $tmp1 | cut -d ' ' -f 1` &&
+	echo Scanning "$1", "$lines" files found. Playing in random order. >&2
+	hexdump -e "\"%08x\n\"" /dev/urandom | head -n "$lines" | paste - \
+	$tmp1 | sort | cut -b 10- |
+	(
+		while read tes
+		do
+		echo Playing "$tes" into "$2":"$3">&2
+		cat "$tes"
+		done
+	) | mp32rtp -i "$2" -p "$3"
+	rm -f $tmp1
+done
